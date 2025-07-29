@@ -1,0 +1,113 @@
+:root {
+    --crm-sidebar-width: 250px;
+    --crm-navbar-height: 145px;
+    
+    --crm-primary: #2c3e50;
+    --crm-secondary: #7f8c8d;
+    --crm-accent: #3498db;
+    --crm-light: #ecf0f1;
+    --crm-dark: #34495e;
+
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+}
+body {
+    overflow-x: hidden;
+    background-color: #f5f7fa;
+}
+.crm-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.crm-wrapper {
+    display: flex;
+    flex: 1;
+    padding-top: var(--crm-navbar-height);
+}
+.crm-main {
+    flex: 1;
+    background: #f8f9fc;
+    min-height: calc(100vh - var(--crm-navbar-height));
+    padding-bottom: 2rem;
+    overflow-y: auto;
+}
+.vendor-container {
+    margin-left: var(--crm-sidebar-width);
+    padding: 10px;
+}
+.cookie-consent-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 360px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    padding: 20px;
+    transform: translateY(120%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cookie-consent-container.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cookie-consent-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cookie-consent-text h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.cookie-consent-text p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.cookie-consent-text a {
+    color: #4e73df;
+    text-decoration: underline;
+}
+
+.cookie-consent-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+@media (max-width: 992px) {
+    .crm-main {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .sidebar-open .crm-main {
+        margin-left: var(--crm-sidebar-width);
+        width: calc(100% - var(--crm-sidebar-width)) !important;
+    }
+}
+@media (max-width: 576px) {
+    .cookie-consent-container {
+        max-width: calc(100% - 40px);
+        left: 20px;
+        right: auto;
+    }
+
+    .cookie-consent-buttons {
+        justify-content: space-between;
+    }
+}
